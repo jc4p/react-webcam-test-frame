@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Webcam from 'react-webcam';
+import * as frame from '@farcaster/frame-sdk';
 
 function App() {
   const [cameraActive, setCameraActive] = useState(false);
+
+  useEffect(() => {
+    frame.sdk.actions.ready();
+  }, [])
 
   const handleStartCamera = () => {
     setCameraActive(true);
